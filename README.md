@@ -1,1 +1,1 @@
-# artemius-checker-azure-mfa
+# artemius-azure-mfa-checker
