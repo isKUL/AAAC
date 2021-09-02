@@ -63,3 +63,11 @@ Run PowerShell as AAAC-user and navigate to the directory with the executable sc
 2. Start the Windows Scheduler.
 3. Create a task. Something like this: Program `powershell.exe` arguments `-File "C:\SCRIPT\artemius-azure-authentication-corrector.ps1"` start in `C:\SCRIPT\`
 4. In the settings, add a trigger to repeat the launch every 5 minutes, but do not create a new instance! And additionally add a trigger to start when the server is turned on.
+
+# Export counter statistics to ZABBIX
+1. Install the zabbix agent on the server
+2. Copy parser for the agent, to the directory `C:\Program Files\Zabbix Agent\scripts\GetValueFromFile.ps1`
+3. Edit zabbix_agentd.conf by adding the line `UserParameter=GetValueFromFile[*], powershell.exe -File "C:\Program Files\Zabbix Agent\scripts\GetValueFromFile.ps1" -stringPath $1 -stringDelimiter $2 -stringKey $3`
+4. Import the template to Zabbix Server
+5. For the server, specify the template _AAAC_Processing
+6. In the server settings, go to `Macros` and add the variable `{$AAAC}` with the value of the path to the counter file, for example `C:/SCRIPT/counters.txt`
