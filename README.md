@@ -51,19 +51,19 @@ Install-Module Microsoft.Graph.Identity.SignIn
 Install-Module MSOnline
 ```
 3. Copy the files to a directory on the server. Make sure that the AAAC-user has access to this directory.
-- artemius-azure-authentication-corrector.ps1
+- AAAC.ps1
 - EnvConf.psm1
 4. Open the file `Env Conf. psm1` and the configuration variables. Attention, the file will store the password from the MSOnline module, so you need to protect access to this directory or to this server.
 
 ## Starting the system
 
 ### Manual start
-Run PowerShell as AAAC-user and navigate to the directory with the executable script artemius-azure-authentication-corrector.ps1 for its further launch. In the last line of the script, there is a line `Start-Work -Recursive $false` that tells you in which mode you need to perform processing. Make sure that the value is set to $false. After the first launch and its successful execution, the script must be run a second time! This is necessary so that for users who were added phone numbers from AD to AAD during the first processing, the phone numbers are set by default methods during the next processing.
+Run PowerShell as AAAC-user and navigate to the directory with the executable script AAAC.ps1 for its further launch. In the last line of the script, there is a line `Start-Work -Recursive $false` that tells you in which mode you need to perform processing. Make sure that the value is set to $false. After the first launch and its successful execution, the script must be run a second time! This is necessary so that for users who were added phone numbers from AD to AAD during the first processing, the phone numbers are set by default methods during the next processing.
 
 ### Automatic start
-1. In the last line of the artemius-azure-authentication-corrector script.1 find the value of `Start-Work-Recursive $false` and make sure that the $true property is set.
+1. In the last line of the AAAC.ps1 script find the value of `Start-Work-Recursive $false` and make sure that the $true property is set.
 2. Start the Windows Scheduler.
-3. Create a task. Something like this: Program `powershell.exe` arguments `-File "C:\SCRIPT\artemius-azure-authentication-corrector.ps1"` start in `C:\SCRIPT\`
+3. Create a task. Something like this: Program `powershell.exe` arguments `-File "C:\SCRIPT\AAAC.ps1"` start in `C:\SCRIPT\`
 4. In the settings, add a trigger to repeat the launch every 5 minutes, but do not create a new instance! And additionally add a trigger to start when the server is turned on.
 
 # Export counter statistics to ZABBIX
