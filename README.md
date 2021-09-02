@@ -1,4 +1,4 @@
-# artemius-azure-authentication-corrector - (AAAC)
+# Artemius-Azure-Authentication-Corrector - (AAAC)
 ## Author
 [_KUL](https://github.com/isKUL)
 # Description
