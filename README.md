@@ -1,14 +1,14 @@
 # artemius-azure-authentication-corrector
-## Description
+# Description
 * The main purpose of the system system is to maintain user correctly working when using Remote Desktop Service (RDS) with Azure Multi-Factor Authentication (MFA), so the system automatically sets the optimal authentication methods (Microsoft Authenticator or Phone number) for working through the Remote Desktop Protocol (RDP) from the user's added ones. 
 * Additionally, this system is designed to process corporate users and automatically add a phone number from local Active Directory for authentication methods of Azure Active Directory when further using the Azure Multi-Factor Authentication (MFA) system. 
 
-## Required environment
+# Required environment
 1. Local Active Directory Domain (`AD`).
 2. Registered Tenant in Azure Active Directory (`AAD`) with an Azure AD Premium P2 license.
 3. Configured hybrid synchronization of users from AD to AAD.
 
-## Work architecture
+# Work architecture
 1. Processing specified domains.
 2. In AD, the specified group is searched for processing. The group must be filled with active users or a group with active users.
 3. By the user from AD is searched in AAD by userPrincipalName.
